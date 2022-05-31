@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/aplicacion.js" type="module" defer></script>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <title>Salinas F.C</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fútbol Club Salinas</h1>
+            <h2>El Club Mas Grande De La Historia</h2>
+        </header>
+        <main class="main">
+            <section class="form-container">
+                <h3>Alta de Jugador</h3>
+            
+            <form action="">
+                
+                <div id="Nombre">
+                    <legend>Nombre</legend>
+                    <input type="text" name="NombreJugador" id="" placeholder="Ingrese el nombre" maxlength="30">
+                </div>
+
+                <div id="Apellido">
+                    <legend>Apellido</legend>
+                    <input type="text" name="ApellidoJugador" id="inputEdad" placeholder="Ingrese el apellido" maxlength="30">
+                </div>
+                
+                <div id="Edad">
+                    <legend>Edad</legend>
+                    <input type="number" name="EdadJugador" id="" placeholder="Ingrese la edad" min="18" max="40">
+                </div>
+                <br>
+                <fieldset>
+                    <legend>Sexo</legend>
+                    <div id="Sexo">
+                        <option value="" selected disabled>Seleccione una opcion</option>
+                        <input type="radio" name="SexoJugador" id="" value="Masculino">Masculino
+                        <input type="radio" name="SexoJugador" id="" value="Femenino">Femenino
+                    </div>
+                </fieldset>
+                
+                
+                <div id="Posicion">
+                    <legend>Posicion en la que Juega</legend>
+                    <select name="PosicionJugador" id="">
+                        <option value="" selected disabled>Seleccione una opcion</option>
+                        <option value="Arquero">Arquero</option>
+                        <option value="Defensor">Defensor</option>
+                        <option value="Mediocampista">Mediocampista</option>
+                        <option value="Delantero">Delantero</option>
+                    </select>
+                </div>
+
+                <div id="Salario">
+                    <legend>Salario</legend>
+                    <input type="number" name="SalarioJugador" id="" placeholder="Ingrese el salario" min="0" >
+                </div>
+                <fieldset>
+                    <legend>Sexo</legend>
+                    <div id="PieDominante">
+                        <option value="" selected disabled>Seleccione una opcion</option>
+                        <input type="radio" name="PieDominanteJugador" id="" value="Derecho">Derecho
+                        <input type="radio" name="PieDominanteJugador" id="" value="Izquierdo">Izquierdo
+                    </div>
+                </fieldset>
+                <br>
+                <input type="hidden" name="txtId" value="">
+
+                <input type="submit" value="Guardar">
+                
+            </form>
+        </section>
+        <section class="table-container"></section>
+        </main>
+        <footer></footer>
+    </div>
+    <footer></footer>
+</body>
+</html>

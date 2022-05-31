@@ -55,19 +55,10 @@ thead.classList.add("cabecera");
 function crearCuerpoTabla(lista)
 {
     const tbody = document.createElement("tbody");
-    
-
-
-    lista.forEach((elemento,index)=>{
+        lista.forEach((elemento,index)=>{
 
         const tr = document.createElement("tr");
-        
-        
-
-
         tr.classList.add(index % 2? "colorImpar":"colorPar","pointer");
-
-
         for (const key in elemento) {
             //para no mostrar el ID
             if(key === "id")

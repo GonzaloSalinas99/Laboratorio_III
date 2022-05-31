@@ -1,0 +1,52 @@
+body{
+    width: 800px;
+    margin: 0% auto;
+}
+
+.container
+{
+    text-align: center;
+   
+}
+
+.main{
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+form{
+    text-align: left;
+    margin-left: 10px;
+    
+}
+#inputEdad{
+    display: inline;
+
+}
+
+input {
+    min-width: 95%;
+    height: 25px;
+    margin: 2px 0px 20px 0px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: #00a2ff;
+    border-width: 1.5px;
+    border-radius: 3px;
+  }
+  fieldset{
+    display: block; 
+    min-width: 0; 
+    max-width: 100%; 
+    width: 70%; 
+    text-overflow: clip;
+    padding: 5px;
+    display: inline;
+  }
+  input[name="PieDominandoJugador"] {
+    border: 3px solid red;
+    background-color: blueviolet;
+}

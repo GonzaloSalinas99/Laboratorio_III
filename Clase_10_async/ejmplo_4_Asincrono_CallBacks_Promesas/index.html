@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASINCRONICA CALLBACKS</title>
+</head>
+<body>
+    <!-- <script>
+        function sumar(a,b,callback)
+        {
+            let rta;
+            setTimeout(()=>{
+
+                try {
+
+                    if(typeof a !== "number" || typeof b !== "number" || typeof callback !== "function")
+                    {
+                        throw Error("Parametros invalidos para la suma");
+                    }
+                        rta = a+b;
+                        console.log("La suma es:"+rta);
+
+                        callback(rta);
+                } catch (error) {
+                    console.error(error.message);
+                }
+            },3000);
+            
+        }
+
+        function restar (a,b,callback){
+            let rta;
+            setTimeout(()=>{
+                try {
+
+                        if(typeof a !== "number" || typeof b !== "number" || typeof callback !== "function")
+                        {
+                            throw Error("Parametros invalidos para la resta");
+                        }
+                            rta = a-b;
+                            console.log("La resta es:"+rta);
+
+                            callback(rta);
+                        } catch (error) {
+                        console.error(error.message);
+                        }
+            },1000);
+        }
+
+        function multiplicar(a,b,callback)
+        {
+            let rta;
+            setTimeout(()=>{
+                try {
+
+                    if(typeof a !== "number" || typeof b !== "number" || typeof callback !== "function")
+                    {
+                        throw Error("Parametros invalidos para el producto");
+                    }
+                        rta = a*b;
+                        console.log("La multiplicacion es:"+rta);
+
+                        callback(rta);
+                    } catch (error) {
+                    console.error(error.message);
+                    }
+            },1000);
+        }
+
+        function cuadrado(a,callback)
+        {
+            let rta;
+            setTimeout(()=>{
+                try {
+
+                    if(typeof a !== "number" || typeof callback !== "function")
+                    {
+                        throw Error("Parametros invalidos para el cuadrado");
+                    }
+                        rta = a*a;
+                        console.log("La suma es:"+rta);
+
+                        callback(rta);
+                    } catch (error) {
+                    console.error(error.message);
+                    }
+            },3000);
+        }
+
+        function informar(resultado)
+        {
+            console.log("El resultado es:" + resultado);
+        }
+
+        //sumar 8 y 5, al resultado calcular el cuadrado,
+        // al cuadrado multiplicarlo por 10 y al resultado restarle 4
+        // informar por consola el resultado
+        console.log("inicio");
+        sumar(8,5,(suma)=>{
+            cuadrado(suma,(cuad)=>{
+                multiplicar(cuad,10,(multi)=>{
+                    restar(multi,40,(resto)=>{
+                        informar(resto);
+                    });
+                });
+            });
+        });
+
+
+
+        // let variableCuadrado = cuadrado(suma);
+        // let multiplicacion = multiplicar(variableCuadrado,10);
+        // let resta = restar(multiplicacion,4);
+        // informar(resta);
+
+
+         //informar(restar(multiplicar(cuadrado(sumar(5,8)),10),4));
+         console.log("fin");
+
+    </script> -->
+
+    <script>
+        //primer parametro del Promise
+        //ejecutor va a ser un callback
+        //el primer parametro y el segundo tienen que ser un callback
+
+        //resolve es el callback es el que tiene que saber que hacer cuando salio todo bien
+        //y le paso el valor exitoso
+        //reject es el callback que tiene que saber que hacer cuando salio todo mal
+        //Le paso la razon de porque fallo el metodo
+        //SE PROGRAMA DENTRO DEL CALLBACK DEL PRIMER PARAMETRO DE LA PROMESA
+        // new Promise((resolve,reject)=>{
+        // });
+
+        function sumar(a,b)
+        {
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+
+                    if(typeof a !== "number" || typeof b !== "number")
+                    {
+                        reject("Parametros invalidos para la suma");
+                    }
+                    let rta = a + b;
+                    console.log("La suma es:"+rta);
+                    resolve(rta);
+                },3000);
+            });
+        }
+
+        function restar (a,b){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+
+                    if(typeof a !== "number" || typeof b !== "number" )
+                    {
+                        reject("Parametros invalidos para la resta");
+                    }
+                    let rta = a-b;
+                    console.log("La resta es:"+rta);
+                    resolve(rta);
+                },3000);
+            });
+        }
+
+        function multiplicar(a,b)
+        {
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+
+                    if(typeof a !== "number" || typeof b !== "number")
+                    {
+                        reject("Parametros invalidos para la multiplicacion");
+                    }
+                    let rta = a*b;
+                    console.log("La multi es:"+rta);
+                    resolve(rta);
+                },3000);
+            });
+        }
+
+        function cuadrado(a)
+        {
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+
+                    if(typeof a !== "number")
+                    {
+                        reject("Parametros invalidos para el cuadrado");
+                    }
+                    let rta = a*a;
+                    console.log("La cuadracion es:"+rta);
+                    resolve(rta);
+                },3000);
+            });
+        }
+
+
+        function isPositive(valor)
+        {
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                    if(typeof valor !== "number")
+                    {
+                        reject("Eso no es un numero");
+                    }
+
+                    let rta = "Es positivo";
+                    if(valor < 0)
+                    {
+                        rta = "Es negativo";
+                    }
+                    resolve(rta);
+                }, 3000);
+            });
+        }
+
+        function informar(resultado)
+        {
+            console.log("El resultado es:" + resultado);
+        }
+        console.log("Inicio");
+
+        let promesa =isPositive(-10);
+        //THEN recibe un callback como primer parametro
+        //Que sabe que hay que hacer cuando la promesa salio todo bien
+        //va a recibir el callback que le pasamos como RESOLVE A LA PROMESA
+
+        promesa.then((x)=>{
+            console.log(x);
+        }); 
+        //CATCH recibe un callback como primer parametro
+        //que sabe que hay que hacer cuando la promesa se resolvio de mala manera
+        //va a recibir el callback que le pasamos como REJECT A LA PROMESA
+        promesa.catch((error)=>{
+            console.error(error);
+        });
+        console.log("Fin");
+
+
+        sumar(8,10).then((suma)=>{
+            return cuadrado(suma);
+        }).then((cuad)=>{
+
+            if(cuad < 170)
+            {
+                return multiplicar(cuad,10);
+            }
+            return Promise.reject("Cuadrado es mayor a 170");
+        }).then((multi)=>{
+            return restar(multi,40);
+        }).then((resta)=>{
+            informar(resta);
+        }).catch((error)=>{
+            console.error(error);
+        });
+
+
+    </script>
+
+</body>
+</html>
